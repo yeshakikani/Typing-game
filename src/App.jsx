@@ -276,9 +276,6 @@ function App() {
       <div className={wrapCls}>
         <div className="screen-over">
           <div className="hdr">
-            <div style={{ display: 'flex', gap: '10px' }}>
-              <button className="theme-btn br-cancel" onClick={() => setScreen('start')} title="Return to main menu">✕ Cancel</button>
-            </div>
             <div className="over-t">GAME OVER</div>
             <ThemeBtn dark={dark} setDark={setDark} />
           </div>
@@ -319,7 +316,10 @@ function App() {
       <div className="screen-game">
         <div className="hdr">
           <div className="logo" style={{ fontSize: 'clamp(18px,4vw,26px)' }}>FAST TYPER</div>
-          <ThemeBtn dark={dark} setDark={setDark} />
+          <div style={{ display: 'flex', gap: '8px', alignItems: 'center' }}>
+            <button className="theme-btn" onClick={() => { setScreen('start'); setSelLvl(null); }} title="Return to main menu">✕ Cancel</button>
+            <ThemeBtn dark={dark} setDark={setDark} />
+          </div>
         </div>
         <div className="top-bar">
           <div className="sbox">
