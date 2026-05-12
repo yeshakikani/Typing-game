@@ -105,13 +105,14 @@ body {
 .wrap {
   width: 100%;
   max-width: 720px;
-  padding: 24px 20px 60px;
+  padding: 24px 20px 40px;
   position: relative;
   z-index: 1;
+  margin: 0 auto;
 }
 
 .wide-wrap {
-  max-width: 860px;
+  max-width: 900px;
 }
 
 /* Glass Component Base */
@@ -170,7 +171,6 @@ body {
 
 .start-sub {
   font-size: 18px;
-  /* Increased from 14px */
   font-weight: 600;
   color: var(--text-dim);
   text-transform: uppercase;
@@ -184,12 +184,6 @@ body {
   grid-template-columns: repeat(3, 1fr);
   gap: 16px;
   margin-bottom: 40px;
-}
-
-@media (max-width: 600px) {
-  .level-grid {
-    grid-template-columns: 1fr;
-  }
 }
 
 .lcard {
@@ -244,7 +238,6 @@ body {
 
 .lc-name {
   font-size: 20px;
-  /* Increased from 18px */
   font-weight: 700;
   margin-bottom: 6px;
   color: var(--text);
@@ -267,14 +260,12 @@ body {
 
 .lc-desc {
   font-size: 16px;
-  /* Increased from 14px */
   color: var(--text-dim);
   line-height: 1.4;
 }
 
 .lc-time {
   font-size: 13px;
-  /* Increased from 11px */
   margin-top: 12px;
   font-weight: 700;
   color: var(--text-dim);
@@ -319,7 +310,6 @@ body {
 
 .how h3 {
   font-size: 14px;
-  /* Increased from 12px */
   text-transform: uppercase;
   letter-spacing: 2px;
   color: var(--text-dim);
@@ -329,7 +319,6 @@ body {
 .how li {
   list-style: none;
   font-size: 16px;
-  /* Increased from 14px */
   color: var(--text-dim);
   padding: 6px 0 6px 24px;
   position: relative;
@@ -468,6 +457,8 @@ body {
   font-family: var(--font-mono);
   font-size: clamp(18px, 4vw, 24px);
   line-height: 1.6;
+  white-space: pre-wrap;
+  word-break: break-word;
 }
 
 .para-disp {
@@ -475,6 +466,8 @@ body {
   font-size: 16px;
   line-height: 1.8;
   text-align: left;
+  white-space: pre-wrap;
+  word-break: break-word;
 }
 
 .wc {
@@ -503,7 +496,6 @@ body {
 
 .type-hint {
   font-size: 14px;
-  /* Added with increased size */
   color: var(--text-dim);
   text-transform: uppercase;
   letter-spacing: 2px;
@@ -519,7 +511,6 @@ body {
   padding: 16px 24px;
   font-family: var(--font-mono);
   font-size: 24px;
-  /* Increased from 20px */
   color: var(--text);
   outline: none;
   text-align: center;
@@ -537,7 +528,6 @@ body {
   text-align: left;
   height: 100px;
   font-size: 18px;
-  /* Increased from 16px */
   resize: none;
 }
 
@@ -615,9 +605,15 @@ body {
 .rv {
   font-family: var(--font-mono);
   font-size: 48px;
-  /* Increased from 42px */
   font-weight: 700;
   margin: 8px 0;
+}
+
+.btns {
+  display: flex;
+  gap: 12px;
+  justify-content: center;
+  flex-wrap: wrap;
 }
 
 .br {
@@ -629,15 +625,16 @@ body {
   font-weight: 800;
   cursor: pointer;
   font-size: 18px;
-  /* Increased from 16px */
   transition: all 0.3s;
+  flex: 1;
+  min-width: 200px;
+  max-width: 300px;
 }
 
 .br.sec {
   background: var(--glass);
   color: var(--text);
   border: 1px solid var(--glass-border);
-  margin-left: 12px;
 }
 
 .br:hover {
@@ -689,7 +686,6 @@ body {
   padding: 6px 20px;
   border-radius: 100px;
   font-size: 14px;
-  /* Increased from 12px */
   font-weight: 800;
   z-index: 10;
   box-shadow: 0 4px 15px rgba(0, 255, 163, 0.4);
@@ -705,5 +701,120 @@ body {
   to {
     opacity: 1;
     transform: translate(-50%, 0) scale(1);
+  }
+}
+
+/* Responsive Queries */
+
+/* Tablet & Smaller Laptops */
+@media (max-width: 1024px) {
+  .wrap {
+    max-width: 680px;
+  }
+  
+  .wide-wrap {
+    max-width: 800px;
+  }
+}
+
+/* Mobile Devices */
+@media (max-width: 768px) {
+  .wrap {
+    padding: 16px 16px 32px;
+  }
+
+  .logo {
+    font-size: 28px;
+  }
+
+  .level-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+  }
+
+  .word-box {
+    padding: 40px 20px;
+    min-height: 160px;
+  }
+
+  .res-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .rc.hi {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 540px) {
+  .level-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .top-bar {
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  .tbar-wrap {
+    order: 3;
+    width: 100%;
+    margin-top: 8px;
+  }
+
+  .sbox {
+    flex: 1;
+  }
+
+  .stats-row {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .res-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .rc.hi {
+    grid-column: span 1;
+  }
+
+  .over-t {
+    font-size: 42px;
+  }
+
+  .rv {
+    font-size: 36px;
+  }
+
+  .br {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .hdr {
+    flex-direction: column;
+    gap: 16px;
+    margin-bottom: 24px;
+  }
+
+  .theme-btn {
+    width: 100%;
+  }
+}
+
+/* Landscape Mobile Fixes */
+@media (max-height: 500px) {
+  .wrap {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+  
+  .word-box {
+    padding: 20px;
+    min-height: auto;
+  }
+
+  .hdr {
+    margin-bottom: 12px;
   }
 }

@@ -205,7 +205,7 @@ function App() {
       let c = 'pending';
       if (i < userInp.length) c = userInp[i] === ch ? 'correct' : 'wrong';
       else if (i === userInp.length) c = 'current';
-      return <span key={i} className={`wc ${c}`}>{ch === ' ' && c === 'pending' ? '\u00a0' : ch}</span>;
+      return <span key={i} className={`wc ${c}`}>{ch}</span>;
     });
   }, []);
 
