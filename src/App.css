@@ -26,8 +26,8 @@
   --bg: #f8f9ff;
   --glass: rgba(0, 0, 0, 0.02);
   --glass-border: rgba(0, 0, 0, 0.08);
-  --text: #0a0a1a;
-  --text-dim: #505070;
+  --text: #000000;
+  --text-dim: #222222;
 
   --accent: #0066ff;
   --accent-glow: rgba(0, 102, 255, 0.2);
@@ -475,7 +475,8 @@ body {
 }
 
 .wc.pending {
-  color: rgba(255, 255, 255, 0.4);
+  color: var(--text);
+  opacity: 0.35;
 }
 
 .wc.correct {
@@ -500,6 +501,10 @@ body {
   text-transform: uppercase;
   letter-spacing: 2px;
   margin-top: 16px;
+}
+
+.input-wrap {
+  margin-bottom: 24px;
 }
 
 /* Input */
@@ -536,6 +541,7 @@ body {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: 12px;
+  margin-top: 24px;
 }
 
 .mini {
@@ -640,6 +646,47 @@ body {
 .br:hover {
   transform: translateY(-2px);
   box-shadow: 0 8px 20px rgba(0, 242, 255, 0.3);
+}
+
+/* Wrong Message */
+.wrong-msg {
+  display: flex;
+  gap: 16px;
+  background: rgba(255, 45, 85, 0.1);
+  border: 1px solid rgba(255, 45, 85, 0.2);
+  border-radius: 16px;
+  padding: 16px 20px;
+  margin-bottom: 24px;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.wm-icon {
+  width: 24px;
+  height: 24px;
+  background: var(--wrong);
+  color: #fff;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 800;
+  flex-shrink: 0;
+}
+
+.wm-title {
+  font-weight: 700;
+  font-size: 14px;
+  color: var(--wrong);
+  margin-bottom: 4px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.wm-detail {
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text);
 }
 
 /* Animations */
