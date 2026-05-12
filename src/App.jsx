@@ -43,6 +43,17 @@ const WrongMsg = memo(({ typed, expected, level }) => {
   );
 });
 
+const ThemeBtn = memo(({ dark, setDark }) => (
+  <button
+    className="theme-btn"
+    onClick={() => setDark(d => !d)}
+    aria-label={dark ? 'Switch to light mode' : 'Switch to dark mode'}
+    title={dark ? 'Switch to light mode' : 'Switch to dark mode'}
+  >
+    {dark ? '☀ Light' : '⬤ Dark'}
+  </button>
+));
+
 function App() {
   const [dark, setDark] = useState(true);
   const [screen, setScreen] = useState('start');
@@ -209,17 +220,6 @@ function App() {
     });
   }, []);
 
-  const ThemeBtn = memo(() => (
-    <button
-      className="theme-btn"
-      onClick={() => setDark(d => !d)}
-      aria-label={dark ? 'Switch to light mode' : 'Switch to dark mode'}
-      title={dark ? 'Switch to light mode' : 'Switch to dark mode'}
-    >
-      {dark ? '☀ Light' : '⬤ Dark'}
-    </button>
-  ));
-
   const wrapCls = `wrap ${screen === 'over' ? 'wide-wrap' : ''}`;
 
   if (screen === 'start') {
@@ -228,7 +228,7 @@ function App() {
         <div className="screen-start">
           <div className="hdr">
             <div className="logo">FAST TYPER</div>
-            <ThemeBtn />
+            <ThemeBtn dark={dark} setDark={setDark} />
           </div>
           <div className="start-sub">Select your difficulty</div>
           <div className="level-grid">
@@ -280,7 +280,7 @@ function App() {
               <button className="theme-btn br-cancel" onClick={() => setScreen('start')} title="Return to main menu">✕ Cancel</button>
             </div>
             <div className="over-t">GAME OVER</div>
-            <ThemeBtn />
+            <ThemeBtn dark={dark} setDark={setDark} />
           </div>
           <div className="over-s">{`${LCFG[lvl].label} mode · your results`}</div>
           <div className="rank-pill" style={{ color: rank.c, borderColor: rank.c, background: rank.c + '18' }}>{rank.l}</div>
@@ -319,7 +319,7 @@ function App() {
       <div className="screen-game">
         <div className="hdr">
           <div className="logo" style={{ fontSize: 'clamp(18px,4vw,26px)' }}>FAST TYPER</div>
-          <ThemeBtn />
+          <ThemeBtn dark={dark} setDark={setDark} />
         </div>
         <div className="top-bar">
           <div className="sbox">
