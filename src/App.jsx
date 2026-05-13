@@ -327,22 +327,24 @@ function App() {
       <div className="wrap wide-wrap">
         <div className="screen-over">
 
-          {/* Three-column header: [blank] [GAME OVER] [ThemeBtn] */}
+          {/* Three-column header: [blank] [GAME OVER] [blank] */}
           <header className="hdr over-hdr">
             <div className="over-hdr-side" />
             <h1 className="over-t">GAME OVER</h1>
             <div className="over-hdr-side over-hdr-right">
-              <ThemeBtn dark={dark} setDark={setDark} />
             </div>
           </header>
 
           {/* Subtitle & rank */}
           <p className="over-s">{LCFG[lvl].label} Mode · Your Results</p>
-          <div
-            className="rank-pill"
-            style={{ color: rank.c, borderColor: rank.c, background: rank.c + '18' }}
-          >
-            {rank.l}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '15px' }}>
+            <div
+              className="rank-pill"
+              style={{ color: rank.c, borderColor: rank.c, background: rank.c + '18' }}
+            >
+              {rank.l}
+            </div>
+            <ThemeBtn dark={dark} setDark={setDark} />
           </div>
 
           {/* Stats cards */}
