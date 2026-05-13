@@ -259,7 +259,7 @@ function App() {
   if (screen === 'start') {
     return (
       <div className="wrap">
-        <div className="screen-start">
+        <main className="screen-start">
           {/* Header */}
           <header className="hdr">
             <div className="logo">FAST TYPER</div>
@@ -315,7 +315,7 @@ function App() {
               <li>Reach your streak goal to earn bonus seconds</li>
             </ul>
           </div>
-        </div>
+        </main>
       </div>
     );
   }
@@ -325,7 +325,7 @@ function App() {
     const rank = getRank(finalWpm, lvl);
     return (
       <div className="wrap wide-wrap">
-        <div className="screen-over">
+        <main className="screen-over">
 
           {/* Three-column header: [blank] [GAME OVER] [blank] */}
           <header className="hdr over-hdr">
@@ -373,7 +373,7 @@ function App() {
               CHANGE LEVEL
             </button>
           </div>
-        </div>
+        </main>
       </div>
     );
   }
@@ -385,7 +385,7 @@ function App() {
 
   return (
     <div className="wrap">
-      <div className="screen-game">
+      <main className="screen-game">
 
         {/* Header */}
         <header className="hdr">
@@ -395,6 +395,7 @@ function App() {
               className="theme-btn"
               onClick={() => { setScreen('start'); setSelLvl(null); }}
               title="Return to main menu"
+              aria-label="Cancel and return to main menu"
             >
               ✕ Cancel
             </button>
@@ -458,6 +459,7 @@ function App() {
                 onChange={handleHardChange}
                 onKeyDown={handleHardKey}
                 placeholder="Start typing the paragraph here..."
+                aria-label="Typing input area"
                 autoComplete="off" autoCorrect="off" autoCapitalize="off" spellCheck={false}
               />
             : <input
@@ -467,6 +469,7 @@ function App() {
                 onChange={isEasy ? handleEasyChange : handleMediumChange}
                 onKeyDown={isMed ? handleMediumKey : undefined}
                 placeholder={isEasy ? 'type here…' : 'Type and press Enter…'}
+                aria-label="Typing input area"
                 autoComplete="off" autoCorrect="off" autoCapitalize="off" spellCheck={false}
               />
           }
@@ -492,7 +495,7 @@ function App() {
           </div>
         </div>
 
-      </div>
+      </main>
     </div>
   );
 }

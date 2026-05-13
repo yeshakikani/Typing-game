@@ -8,11 +8,38 @@
   <meta name="description"
     content="Test and improve your typing speed with Fast Typer. Choose between multiple difficulty levels, track your WPM, and reach new streaks in this fast-paced typing game." />
   <meta name="keywords" content="typing game, fast typer, wpm test, typing speed, learn typing, react typing game" />
+  <meta name="theme-color" content="#030308" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
     href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=Syne:wght@400;600;700;800&display=swap"
     rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      background-color: #030308;
+      color: #f0f0ff;
+      font-family: 'Syne', sans-serif;
+    }
+    #root:empty {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      font-size: 24px;
+      font-weight: bold;
+      color: #00f2ff;
+      letter-spacing: 2px;
+    }
+    #root:empty::before {
+      content: 'LOADING FAST TYPER...';
+      animation: pulse 1s infinite alternate;
+    }
+    @keyframes pulse {
+      from { opacity: 0.5; }
+      to { opacity: 1; }
+    }
+  </style>
 </head>
 
 <body>
