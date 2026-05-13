@@ -223,6 +223,12 @@ body::before {
   color: #000;
 }
 
+/* Light mode: selected check should also be white */
+.light .lcard.sel .check {
+  color: #ffffff;
+}
+
+
 .lc-icon { font-size: 30px; margin-bottom: 10px; }
 .lc-name { font-size: 19px; font-weight: 700; margin-bottom: 6px; }
 .lcard.easy  .lc-icon, .lcard.easy  .lc-name { color: var(--easy); }
@@ -264,6 +270,14 @@ body::before {
   transition: opacity 0.3s, transform 0.3s, box-shadow 0.3s;
 }
 .btn-go.rdy { opacity: 1; pointer-events: all; }
+
+/* Light mode: make START GAME text white */
+.light .btn-go {
+  color: hsl(0, 16%, 96%);
+}
+.light .btn-go.rdy:hover {
+  color: #fffdfd;
+}
 .btn-go.rdy:hover {
   transform: translateY(-3px);
   box-shadow: 0 10px 30px rgba(0,242,255,0.35);
@@ -478,6 +492,17 @@ body::before {
 .wc { transition: color 0.08s; }
 .wc.pending { color: var(--text); opacity: 0.3; }
 .light .wc.pending { opacity: 0.45; }
+
+/* Start screen (light mode) should be bright/visible */
+.light .wc.pending,
+.light .word-disp,
+.light .sent-disp,
+.light .para-disp {
+  color: #252424;
+}
+
+
+
 .wc.correct { color: var(--correct); text-shadow: 0 0 10px rgba(0,255,163,0.35); }
 .wc.wrong   { color: var(--wrong);   background: rgba(255,45,85,0.18); border-radius: 2px; }
 .wc.current { color: var(--text);    border-bottom: 2px solid var(--accent); }
