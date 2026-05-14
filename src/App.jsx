@@ -97,6 +97,34 @@ function App() {
   /* Theme */
   useEffect(() => { document.body.className = dark ? '' : 'light'; }, [dark]);
 
+  /* Anti-Cheating System */
+  useEffect(() => {
+    const prevent = (e) => e.preventDefault();
+    const preventKeys = (e) => {
+      if ((e.ctrlKey || e.metaKey) && ['c', 'v', 'x', 'a'].includes(e.key.toLowerCase())) {
+        e.preventDefault();
+      }
+    };
+    document.addEventListener('copy', prevent);
+    document.addEventListener('paste', prevent);
+    document.addEventListener('cut', prevent);
+    document.addEventListener('contextmenu', prevent);
+    document.addEventListener('selectstart', prevent);
+    document.addEventListener('dragstart', prevent);
+    document.addEventListener('drop', prevent);
+    document.addEventListener('keydown', preventKeys);
+    return () => {
+      document.removeEventListener('copy', prevent);
+      document.removeEventListener('paste', prevent);
+      document.removeEventListener('cut', prevent);
+      document.removeEventListener('contextmenu', prevent);
+      document.removeEventListener('selectstart', prevent);
+      document.removeEventListener('dragstart', prevent);
+      document.removeEventListener('drop', prevent);
+      document.removeEventListener('keydown', preventKeys);
+    };
+  }, []);
+
   /* Source picker */
   const src = useCallback((l) => l === 'easy' ? EW : l === 'medium' ? MS : HP, []);
 
@@ -438,7 +466,15 @@ function App() {
         )}
 
         {/* Word / sentence / paragraph display */}
-        <div className="word-box">
+        <div 
+          className="word-box"
+          onMouseDown={e => e.preventDefault()}
+          onSelectStart={e => e.preventDefault()}
+          onContextMenu={e => e.preventDefault()}
+          onCopy={e => e.preventDefault()}
+          onCut={e => e.preventDefault()}
+          onPaste={e => e.preventDefault()}
+        >
           <div className={dispCls}>{renderChars(current, inp)}</div>
           <div className="type-hint">
             {isEasy ? 'type the word · space to submit'
@@ -457,6 +493,10 @@ function App() {
               onChange={handleHardChange}
               onKeyDown={handleHardKey}
               placeholder="Start typing the paragraph here..."
+              onPaste={e => e.preventDefault()}
+              onCopy={e => e.preventDefault()}
+              onCut={e => e.preventDefault()}
+              onDrop={e => e.preventDefault()}
               autoComplete="off" autoCorrect="off" autoCapitalize="off" spellCheck={false}
             />
             : <input
@@ -466,6 +506,10 @@ function App() {
               onChange={isEasy ? handleEasyChange : handleMediumChange}
               onKeyDown={isMed ? handleMediumKey : undefined}
               placeholder={isEasy ? 'type here…' : 'Type and press Enter…'}
+              onPaste={e => e.preventDefault()}
+              onCopy={e => e.preventDefault()}
+              onCut={e => e.preventDefault()}
+              onDrop={e => e.preventDefault()}
               autoComplete="off" autoCorrect="off" autoCapitalize="off" spellCheck={false}
             />
           }
